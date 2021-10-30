@@ -3,11 +3,8 @@ const clearButton = document.getElementById('AC');
 let deleteButton = document.getElementById('del');
 let numberButtons = document.querySelectorAll('.numericalButton');
 let userInput1 = document.createElement('h3');
-userInput1.className="calculatorOutput";
-calculatorDisplay.appendChild(userInput1);
+calculatorDisplay.appendChild(userInput1).className="calculatorOutput";
 
-deleteButton.addEventListener('click', calculator.del);
-clearButton.addEventListener('click', calculator.clear);
 
 let previousNum;
 let secondNum;
@@ -36,6 +33,9 @@ calculator = {
         userInput1.textContent = userInput1.textContent.slice(0,-1);
        }
 }
+
+deleteButton.addEventListener('click', calculator.del);
+clearButton.addEventListener('click', calculator.clear);
 
 const populateDisplay = numberButtons.forEach((button) => {
     button.addEventListener('click', function (e) {
