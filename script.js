@@ -1,4 +1,5 @@
-const calculatorDisplay = document.getElementById("display");
+const calculatorDisplay = document.getElementById('display');
+const clearButton = document.getElementById('AC')
 let numberButtons = document.querySelectorAll('.numericalButton');
 let operatorButtons = document.querySelectorAll('.operatorButton');
 let equalButton = document.getElementById('equal');
@@ -45,7 +46,11 @@ calculation = {
         return previousNum * secondNum;
     },
     division(previousNum, secondNum) {
-        return previousNum / secondNum; 
+        if (secondNum === 0) {
+            return 'Error!';
+        } else {
+            return previousNum / secondNum;
+        } 
 }
 }
 
@@ -63,3 +68,10 @@ const operate = (operator,previousNum, secondNum) => {
     }
 }
 
+function clear() {
+    userInput1.textContent = ''; 
+    previousNum = 0;
+    secondNum = 0;
+}
+
+clearButton.addEventListener('click', clear);
