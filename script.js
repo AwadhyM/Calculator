@@ -1,19 +1,17 @@
 const calculatorDisplay = document.getElementById('display');
-const clearButton = document.getElementById('AC')
+const clearButton = document.getElementById('AC');
+let deleteButton = document.getElementById('del');
 let numberButtons = document.querySelectorAll('.numericalButton');
 let operatorButtons = document.querySelectorAll('.operatorButton');
 let equalButton = document.getElementById('equal');
 let userInput1 = document.createElement('h3');
-let userInput2 = document.createElement('h3');
 userInput1.className="calculatorOutput"
 calculatorDisplay.appendChild(userInput1);
-calculatorDisplay.appendChild(userInput2);
 let previousNum;
 let secondNum;
 let newNum;
 
 let operator;
-
 
 const populateDisplay = numberButtons.forEach((button) => {
     button.addEventListener('click', function (e) {
@@ -21,17 +19,17 @@ const populateDisplay = numberButtons.forEach((button) => {
        if (initialInput === '=') {
            userInput1.textContent = ''; 
        }
-    if (e.target.id === '+' || e.target.id === '-' || e.target.id === '/' || e.target.id === 'x') {
+       if (e.target.id === '+' || e.target.id === '-' || e.target.id === '/' || e.target.id === 'x') {
         operator = e.target.id;
         previousNum = userInput1.textContent;
         previousNum = parseFloat(previousNum);
         userInput1.textContent = '';
-    }
-    if (e.target.id === '=' && (operator === '+' || operator === '-' || operator === 'x' || operator === '/')) {
+       }
+       if (e.target.id === '=' && (operator === '+' || operator === '-' || operator === 'x' || operator === '/')) {
         secondNum = userInput1.textContent;
         secondNum = parseFloat(secondNum);
         userInput1.textContent = operate(operator, previousNum, secondNum);
-    }
+       }
     })
 });
 
@@ -54,7 +52,7 @@ calculation = {
 }
 }
 
-const operate = (operator,previousNum, secondNum) => {
+const operate = (operator,previousNum, secondNum) => {;
     if (operator === '+') {
         return calculation.addition(previousNum, secondNum);
     } else if (operator === '-') {
@@ -68,10 +66,18 @@ const operate = (operator,previousNum, secondNum) => {
     }
 }
 
+
 function clear() {
     userInput1.textContent = ''; 
     previousNum = 0;
     secondNum = 0;
 }
+
+deleteButton.addEventListener('click', del);
+
+function del() {
+ userInput1.textContent = userInput1.textContent.slice(0,-1);
+}
+
 
 clearButton.addEventListener('click', clear);
