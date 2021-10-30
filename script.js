@@ -2,16 +2,40 @@ const calculatorDisplay = document.getElementById('display');
 const clearButton = document.getElementById('AC');
 let deleteButton = document.getElementById('del');
 let numberButtons = document.querySelectorAll('.numericalButton');
-let operatorButtons = document.querySelectorAll('.operatorButton');
-let equalButton = document.getElementById('equal');
 let userInput1 = document.createElement('h3');
-userInput1.className="calculatorOutput"
+userInput1.className="calculatorOutput";
 calculatorDisplay.appendChild(userInput1);
+
+deleteButton.addEventListener('click', calculator.del);
+clearButton.addEventListener('click', calculator.clear);
+
 let previousNum;
 let secondNum;
-let newNum;
-
 let operator;
+
+calculator = {
+    operate(operator,previousNum, secondNum) {
+        if (operator === '+') {
+            return calculation.addition(previousNum, secondNum);
+        } else if (operator === '-') {
+            return calculation.subtraction(previousNum, secondNum);
+        } else if (operator === '/') {
+            return calculation.division(previousNum, secondNum);
+        } else if (operator === 'x') {
+            return calculation.multiplication(previousNum, secondNum);
+        } else {
+            return 'ERROR';
+        }
+    },
+    clear() {
+        userInput1.textContent = ''; 
+        previousNum = 0;
+        secondNum = 0;
+    },
+    del() {
+        userInput1.textContent = userInput1.textContent.slice(0,-1);
+       }
+}
 
 const populateDisplay = numberButtons.forEach((button) => {
     button.addEventListener('click', function (e) {
@@ -28,7 +52,7 @@ const populateDisplay = numberButtons.forEach((button) => {
        if (e.target.id === '=' && (operator === '+' || operator === '-' || operator === 'x' || operator === '/')) {
         secondNum = userInput1.textContent;
         secondNum = parseFloat(secondNum);
-        userInput1.textContent = operate(operator, previousNum, secondNum);
+        userInput1.textContent = calculator.operate(operator, previousNum, secondNum);
        }
     })
 });
@@ -51,33 +75,3 @@ calculation = {
         } 
 }
 }
-
-const operate = (operator,previousNum, secondNum) => {;
-    if (operator === '+') {
-        return calculation.addition(previousNum, secondNum);
-    } else if (operator === '-') {
-        return calculation.subtraction(previousNum, secondNum);
-    } else if (operator === '/') {
-        return calculation.division(previousNum, secondNum);
-    } else if (operator === 'x') {
-        return calculation.multiplication(previousNum, secondNum);
-    } else {
-        return 'ERROR';
-    }
-}
-
-
-function clear() {
-    userInput1.textContent = ''; 
-    previousNum = 0;
-    secondNum = 0;
-}
-
-deleteButton.addEventListener('click', del);
-
-function del() {
- userInput1.textContent = userInput1.textContent.slice(0,-1);
-}
-
-
-clearButton.addEventListener('click', clear);
