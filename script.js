@@ -46,11 +46,13 @@ const populateDisplay = numberButtons.forEach((button) => {
        if (e.target.id === '+' || e.target.id === '-' || e.target.id === '/' || e.target.id === 'x') {
         operator = e.target.id;
         previousNum = userInput1.textContent;
+        previousNum = previousNum.replace(/[^a-zA-Z0-9]/g,'');
         previousNum = parseFloat(previousNum);
         userInput1.textContent = '';
        }
        if (e.target.id === '=' && (operator === '+' || operator === '-' || operator === 'x' || operator === '/')) {
         secondNum = userInput1.textContent;
+        secondNum = secondNum.replace(/[^a-zA-Z0-9]/g,'');
         secondNum = parseFloat(secondNum);
         userInput1.textContent = calculator.operate(operator, previousNum, secondNum);
        }
@@ -75,3 +77,4 @@ calculation = {
         } 
 }
 }
+
