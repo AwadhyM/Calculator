@@ -16,7 +16,10 @@ let operator;
 
 const populateDisplay = numberButtons.forEach((button) => {
     button.addEventListener('click', function (e) {
-        userInput1.textContent += `${e.target.id}`;
+       let initialInput = userInput1.textContent += `${e.target.id}`;
+       if (initialInput === '=') {
+           userInput1.textContent = ''; 
+       }
     if (e.target.id === '+' || e.target.id === '-' || e.target.id === '/' || e.target.id === 'x') {
         operator = e.target.id;
         previousNum = userInput1.textContent;
