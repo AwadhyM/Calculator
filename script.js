@@ -46,6 +46,11 @@ calculator = {
 deleteButton.addEventListener('click', calculator.del);
 clearButton.addEventListener('click', calculator.clear);
 
+const populateDisplay = numberButtons.forEach((button) => {
+    button.addEventListener('click', function(e) {
+        let initialInput = userInput1.textContent += `${e.target.id}`;
+    })
+})
 
 const operationButton = operationButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
@@ -59,7 +64,8 @@ const operationButton = operationButtons.forEach((button) => {
 })
 })
 
-operateButton.addEventListener('click', Equal);
+
+operateButton.addEventListener('click', calculator.equal);
 
 
 calculation = {
