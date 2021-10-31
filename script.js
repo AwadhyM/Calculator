@@ -10,6 +10,7 @@ calculatorDisplay.appendChild(userInput1).className="calculatorOutput";
 let previousNum;
 let secondNum;
 let operator = 'default'; 
+let decimals = false; 
 
 calculator = {
     operate(operator,previousNum, secondNum) {
@@ -30,6 +31,7 @@ calculator = {
         previousNum = 0;
         secondNum = 0;
         operator = 'default';
+        decimals = false;
     },
     del() {
         userInput1.textContent = userInput1.textContent.slice(0,-1);
@@ -40,6 +42,7 @@ calculator = {
         secondNum = parseFloat(secondNum);
         calculator.operate(operator, previousNum, secondNum);
         operator = 'default';
+        decimals = false;
    }
 }
 
@@ -48,9 +51,15 @@ clearButton.addEventListener('click', calculator.clear);
 
 const populateDisplay = numberButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
+        if (decimals === true && e.target.id === '.') {
+            return;
+        } else if (e.target.id === '.' && decimals === false) {
+            decimals = true;
+        } 
         let initialInput = userInput1.textContent += `${e.target.id}`;
     })
 })
+
 
 const operationButton = operationButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
@@ -59,6 +68,7 @@ const operationButton = operationButtons.forEach((button) => {
     } else {
         previousNum = userInput1.textContent;
         userInput1.textContent = '';
+        decimals = false;
     }
     operator = e.target.id;
 })
