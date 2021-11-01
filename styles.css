@@ -1,3 +1,14 @@
+body, html {
+    height:100%
+}
+
+.bg {
+    background-image: url(Images/notepad-background.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
 header {
     display: flex;
     justify-content: center;
@@ -8,20 +19,26 @@ h2 {
     font-weight: 900;
 }
 
+.title {
+    position: relative;
+    left:250px;
+}
 
 .poweredBy {
-    color: #f7df1e;
+    color: white;
 }
 
 .title {
     font-size:50px; 
-    color: black;
+    text-decoration: underline black;
+    font-style: italic;
+    color: white;
     font-weight: 900;
 }
 
 .calculatorOutput {
     font-size: 25px;
-    color: #f7df1e;
+    color: black;
 }
 
 
@@ -29,6 +46,7 @@ h2 {
 #containCalculator {
     display: flex;
     justify-content: center;
+    margin-left: 520px;
 }
 
 #calculator {
@@ -36,12 +54,12 @@ h2 {
     align-items: center;
     flex-direction: column;
     margin-top: 50px;
-    border: solid 4px #f7df1e;
+    border: solid 4px black;
     border-radius: 40px;
     width: 500px;
     height: 600px;
-    background-color: rgb(0, 76, 139);
-    color: #f7df1e;
+    background-color: rgba(128, 128, 128, 0);
+    color: black;
 }
 
 
@@ -50,7 +68,8 @@ h2 {
     justify-content: flex-end;
     flex-direction: row;
     overflow: hidden;
-    border: solid 4px #f7df1e;
+    border: solid 4px black;
+    background-color: white;
     border-radius: 10px;
     width: 475px;
     height: 55px;
@@ -80,12 +99,12 @@ h2 {
 button {
     width:80px;
     height:60px;
-    border: solid 3px #f7df1e;
+    border: solid 3px black;
     border-radius: 5px;
-    background-color:rgb(0, 76, 139);
+    background-color:white;
     font-size: 20px;
     font-weight: 900;
-    color: white;
+    color: black;
 }
 
 #del {
@@ -98,7 +117,11 @@ button {
     color: black;
 }
 
-button:hover{
+button:hover {
     background-color: #f7df1e;
+}
+
+h2:hover {
+    color: #f7df1e;
 }
 
