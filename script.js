@@ -101,39 +101,35 @@ calculation = {
 }
 }
 
-// Functions for keyboard functionality 
- /*
+ //Functions for keyboard functionality 
+ 
     document.addEventListener('keydown', function(e) {
         if (decimals === true && e.key === '.') {
             return;
         } else if (e.key === '.' && decimals === false) {
             decimals = true;
         } 
-        if (e.key != '+' && e.key != '/' && e.key != '-' && e.key != 'x') {
+        if (e.key >= 0 && e.key <= 9) {
             let initialInput = userInput1.textContent += `${e.key}`;
         }
     }) // works as intended
 
-   operationButtons.forEach((button) => button.addEventListener('keydown', function(e) {   
+   operationButtons.forEach((button) => document.addEventListener('keydown', function(e) {   
             if (operator != 'default') {
                 return;
             } else if (e.key === '+' || e.key === '/' || e.key === '-' || e.key === 'x') {
+                console.log(operator = e.key);
                 previousNum = userInput1.textContent;
                 console.log(previousNum);
                 userInput1.textContent = '';
                 decimals = false;
             }
-            console.log(previousNum);
-            console.log(operator = e.key);
         })
     )
-
-
-
     
 document.addEventListener('keydown', function(e) {
-    if (e.key === '=' || e.key === 'enter') {
+    if (e.key === '=' || e.key === 'Enter') {
         calculator.equal(operator, previousNum, secondNum);
     }
 })
-*/
+
