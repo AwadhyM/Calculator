@@ -37,19 +37,23 @@ calculator = {
         userInput1.textContent = userInput1.textContent.slice(0,-1);
        },
     equal() {
+        if (operator === 'default') {
+            return;
+        } else {
         previousNum = parseFloat(previousNum);
         secondNum = userInput1.textContent;
         secondNum = parseFloat(secondNum);
         calculator.operate(operator, previousNum, secondNum);
         operator = 'default';
         decimals = false;
-   }
+        }
+    }
 }
 
 deleteButton.addEventListener('click', calculator.del);
 clearButton.addEventListener('click', calculator.clear);
 
-const populateDisplay = numberButtons.forEach((button) => {
+const populateDisplayEventListeners = numberButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
         if (decimals === true && e.target.id === '.') {
             return;
@@ -97,4 +101,39 @@ calculation = {
 }
 }
 
+// Functions for keyboard functionality 
+ /*
+    document.addEventListener('keydown', function(e) {
+        if (decimals === true && e.key === '.') {
+            return;
+        } else if (e.key === '.' && decimals === false) {
+            decimals = true;
+        } 
+        if (e.key != '+' && e.key != '/' && e.key != '-' && e.key != 'x') {
+            let initialInput = userInput1.textContent += `${e.key}`;
+        }
+    }) // works as intended
 
+   operationButtons.forEach((button) => button.addEventListener('keydown', function(e) {   
+            if (operator != 'default') {
+                return;
+            } else if (e.key === '+' || e.key === '/' || e.key === '-' || e.key === 'x') {
+                previousNum = userInput1.textContent;
+                console.log(previousNum);
+                userInput1.textContent = '';
+                decimals = false;
+            }
+            console.log(previousNum);
+            console.log(operator = e.key);
+        })
+    )
+
+
+
+    
+document.addEventListener('keydown', function(e) {
+    if (e.key === '=' || e.key === 'enter') {
+        calculator.equal(operator, previousNum, secondNum);
+    }
+})
+*/
