@@ -5,7 +5,10 @@ const numberButtons = document.querySelectorAll('.numericalButton');
 const operationButtons = document.querySelectorAll('.operationButton');
 const operateButton = document.getElementById('=');
 const userInput1 = document.createElement('h3');
+const previousCalculation = document.createElement('h4');
 calculatorDisplay.appendChild(userInput1).className="calculatorOutput";
+calculatorDisplay.appendChild(previousCalculation).className="previousCalcOutput"
+
 
 let previousNum;
 let secondNum;
@@ -65,6 +68,7 @@ const populateDisplayEventListeners = numberButtons.forEach((button) => {
             decimals = true;
         } 
         let initialInput = userInput1.textContent += `${e.target.id}`;
+        if (initialInput.length > 24) return;
     })
 })
 
@@ -119,6 +123,7 @@ function keyboardHandler(e) {
     if (key === '.' && decimals === false) decimals = true;
     if (key >= 0 && key <= 9) {
         let initialInput = userInput1.textContent += `${e.key}`;
+        e
     } 
     if (key === '=' || key === 'Enter') calculator.equal(operator, previousNum, secondNum);
     if (operator != 'default') return;

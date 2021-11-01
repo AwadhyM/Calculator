@@ -48,12 +48,14 @@ h2 {
 #display {
     display: flex;
     justify-content: flex-end;
+    flex-direction: row;
     overflow: hidden;
     border: solid 4px #f7df1e;
     border-radius: 10px;
     width: 475px;
     height: 55px;
 }
+
 
 #top {
     display: flex;
@@ -64,7 +66,7 @@ h2 {
 }
 
 #imgJS {
-    margin-top: 0px;
+    margin-top: 17px;
 }
 
 #buttons{
@@ -96,7 +98,7 @@ button {
     color: black;
 }
 
-button:hover {
+button:hover{
     background-color: #f7df1e;
 }
 
