@@ -107,33 +107,27 @@ calculation = {
 
  //Functions for keyboard functionality 
  
- /**document.addEventListener('keydown', function(e) {
-    if (decimals === true && e.key === '.') {
-        return;
-    } else if (e.key === '.' && decimals === false) {
-        decimals = true;
-    } 
-    if (e.key >= 0 && e.key <= 9) {
+
+
+// code for keyboard functionality
+
+function keyboardHandler(e) {
+    key = e.key;
+    if (key === 'Backspace') calculator.del();
+    if (key === 'Delete') calculator.clear();
+    if (decimals === true && key === '.') return;
+    if (key === '.' && decimals === false) decimals = true;
+    if (key >= 0 && key <= 9) {
         let initialInput = userInput1.textContent += `${e.key}`;
-    }
-}) 
-
-operationButtons.forEach((button) => document.addEventListener('keydown', function(e) {   
-        if (operator != 'default') {
-            return;
-        } else if (e.key === '+' || e.key === '/' || e.key === '-' || e.key === 'x') {
-            console.log(operator = e.key);
-            previousNum = userInput1.textContent;
-            console.log(previousNum);
-            userInput1.textContent = '';
-            decimals = false;
-        }
-    })
-)
-
-document.addEventListener('keydown', function(e) {
-if (e.key === '=' || e.key === 'Enter') {
-    calculator.equal(operator, previousNum, secondNum);
+    } 
+    if (key === '=' || key === 'Enter') calculator.equal(operator, previousNum, secondNum);
+    if (operator != 'default') return;
+    if (key === '+' || key === '/' || key === '-' || key === 'x') {
+        operator = key;
+        previousNum = userInput1.textContent;
+        userInput1.textContent = '';
+        decimals = false;
+    } 
 }
-})
-*/
+
+document.addEventListener('keydown', keyboardHandler);
