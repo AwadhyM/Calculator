@@ -103,33 +103,30 @@ calculation = {
 
  //Functions for keyboard functionality 
  
-    document.addEventListener('keydown', function(e) {
-        if (decimals === true && e.key === '.') {
-            return;
-        } else if (e.key === '.' && decimals === false) {
-            decimals = true;
-        } 
-        if (e.key >= 0 && e.key <= 9) {
-            let initialInput = userInput1.textContent += `${e.key}`;
-        }
-    }) // works as intended
+ document.addEventListener('keydown', handleKeyboardInput)
 
-   operationButtons.forEach((button) => document.addEventListener('keydown', function(e) {   
-            if (operator != 'default') {
-                return;
-            } else if (e.key === '+' || e.key === '/' || e.key === '-' || e.key === 'x') {
-                console.log(operator = e.key);
-                previousNum = userInput1.textContent;
-                console.log(previousNum);
-                userInput1.textContent = '';
-                decimals = false;
-            }
-        })
-    )
-    
-document.addEventListener('keydown', function(e) {
-    if (e.key === '=' || e.key === 'Enter') {
+ function handleKeyboardInput(e) {
+    key = e.key;
+    if (decimals === true && key === '.') {
+        return;
+    } else if (key === '.' && decimals === false) {
+        decimals = true;
+    } if (key >= 0 && key <= 9) {
+        let initialInput = userInput1.textContent += `${e.key}`;
+    } if (key === '=' || key === 'Enter') {
         calculator.equal(operator, previousNum, secondNum);
-    }
-})
+    } 
+      if (operator != 'default') {
+         return;
+    } else if (key === '+' || key === '/' || key === '-' || key === 'x') {
+        (operator = key);
+        previousNum = userInput1.textContent;
+        userInput1.textContent = '';
+        decimals = false; 
+}
+}
 
+
+    
+
+    
