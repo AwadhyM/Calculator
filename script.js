@@ -1,3 +1,14 @@
+
+// code that displays date 
+
+function displayDate() {
+    document.getElementById("date").textContent = Date().slice(0,16);
+}
+
+displayDate();
+
+// Variables and objects relating to calculator
+
 const calculatorDisplay = document.getElementById('display');
 const clearButton = document.getElementById('AC');
 const insertDate = document.getElementsByClassName('.date');
@@ -9,12 +20,6 @@ const userInput1 = document.createElement('h3');
 const previousCalculation = document.createElement('h4');
 calculatorDisplay.appendChild(userInput1).className="calculatorOutput";
 calculatorDisplay.appendChild(previousCalculation).className="previousCalcOutput"
-
-function displayDate() {
-    document.getElementById("date").textContent = Date().slice(0,16);
-}
-
-displayDate();
 
 
 let previousNum;
