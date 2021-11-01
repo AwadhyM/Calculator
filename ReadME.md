@@ -2,3 +2,6 @@ This project is a calculator created using JavaScript, HTML and CSS. It's functi
 
 Project started - 12:25 on 30/10/2021 
 Project completed - 23:30 01/11/2021 
+
+Credits for the copyright-free background image go to Kelly Sikkemma 
+https://unsplash.com/photos/2q_frVRXWfQ
