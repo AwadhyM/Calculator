@@ -16,10 +16,9 @@ const numberButtons = document.querySelectorAll('.numericalButton');
 const operationButtons = document.querySelectorAll('.operationButton');
 const operateButton = document.getElementById('=');
 const displayValue = document.createElement('h3');
-const previousCalculation = document.createElement('h4');
 calculatorDisplay.appendChild(displayValue).className="calculatorOutput";
 
-
+// global variables for control flow 
 displayValue.textContent = ''
 let previousNum = null;
 let currentNum = null;
@@ -53,28 +52,23 @@ calculator = {
        },
     equal() {    
     console.log(previousNum = parseFloat(previousNum));
-    console.log(secondNum = displayValue.textContent);
-        //if (secondNum === '') {
-          //  secondNum.slice(0-1);
-            //return secondNum = displayValue.textContent;
-        secondNum = parseFloat(secondNum);
-        calculator.operate(operator, previousNum, secondNum);
-        decimals = false;
-        currentNum = null;
+    secondNum = displayValue.textContent;
+    console.log(secondNum = parseFloat(secondNum));
+    calculator.operate(operator, previousNum, secondNum);
+    decimals = false, currentNum = null;
         }
     }
 
-
+// Event listeners for AC and Del buttons
 deleteButton.addEventListener('click', calculator.del);
 clearButton.addEventListener('click', calculator.clear);
 
-//function used to display numbers on the screen
-
+//functions used to display numbers and control the operator
 const displayNumbers = numberButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
     if ((e.target.id >= 0 && e.target.id <=9)) displayValue.textContent += `${e.target.id}`;
     if ((e.target.id === '.') && (decimals === false)) {
-        displayValue.textContent += `${e.target.id}`;
+        displayValue.textContent += e.target.id;
         decimals = true;
     }
     if ((e.target.id === '.') && (decimals == true)) {
@@ -100,7 +94,6 @@ const controlOperator = operationButtons.forEach((button) => {
         }
         if ((previousNum != null) && operatorActive === false) {
             if (operator === 'default') {
-                //operator = e.target.id;
                 return;
             } else {
              calculator.equal();
