@@ -136,30 +136,4 @@ calculation = {
 }
 }
 
- //Functions for keyboard functionality 
- 
 
-
-// code for keyboard functionality
-
-function keyboardHandler(e) {
-    key = e.key;
-    if (key === 'Backspace') calculator.del();
-    if (key === 'Delete') calculator.clear();
-    if (decimals === true && key === '.') return;
-    if (key === '.' && decimals === false) decimals = true;
-    if (key >= 0 && key <= 9) {
-        let initialInput = userInput1.textContent += `${e.key}`;
-        e
-    } 
-    if (key === '=' || key === 'Enter') calculator.equal(operator, previousNum, currentNum);
-    if (operator != 'default') return;
-    if (key === '+' || key === '/' || key === '-' || key === 'x') {
-        operator = key;
-        previousNum = userInput1.textContent;
-        userInput1.textContent = '';
-        decimals = false;
-    } 
-}
-
-document.addEventListener('keydown', keyboardHandler);
