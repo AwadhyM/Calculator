@@ -108,7 +108,7 @@ const controlOperator = operationButtons.forEach((button) => {
 
 operateButton.addEventListener('click', calculator.equal);
 
-
+//Functions for each calculation
 calculation = {
     addition(previousNum, secondNum) {
         return (previousNum + secondNum);
