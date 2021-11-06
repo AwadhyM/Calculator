@@ -10,18 +10,17 @@ displayDate();
 
 const calculatorDisplay = document.getElementById('display');
 const clearButton = document.getElementById('AC');
-const allButtons = document.querySelectorAll('button');
 const insertDate = document.getElementsByClassName('.date');
 const deleteButton = document.getElementById('del');
 const numberButtons = document.querySelectorAll('.numericalButton');
 const operationButtons = document.querySelectorAll('.operationButton');
 const operateButton = document.getElementById('=');
-const userInput1 = document.createElement('h3');
+const displayValue = document.createElement('h3');
 const previousCalculation = document.createElement('h4');
-calculatorDisplay.appendChild(userInput1).className="calculatorOutput";
+calculatorDisplay.appendChild(displayValue).className="calculatorOutput";
 calculatorDisplay.appendChild(previousCalculation).className="previousCalcOutput"
 
-displayValue = userInput1.textContent = ''
+displayValue.textContent = ''
 let previousNum = null;
 let currentNum = null;
 let operator = 'default'; 
@@ -31,33 +30,33 @@ let decimals = false;
 calculator = {
     operate(operator,previousNum, secondNum) {
         if (operator === '+') {
-            return previousNum = userInput1.textContent = calculation.addition(previousNum, secondNum);
+            return previousNum = displayValue.textContent = calculation.addition(previousNum, secondNum);
         } else if (operator === '-') {
-            return previousNum = userInput1.textContent = calculation.subtraction(previousNum, secondNum);
+            return previousNum = displayValue.textContent = calculation.subtraction(previousNum, secondNum);
         } else if (operator === '/') {
-            return previousNum = userInput1.textContent = calculation.division(previousNum, secondNum);
+            return previousNum = displayValue.textContent = calculation.division(previousNum, secondNum);
         } else if (operator === 'x') {
-            return previousNum = userInput1.textContent = calculation.multiplication(previousNum, secondNum);
+            return previousNum = displayValue.textContent = calculation.multiplication(previousNum, secondNum);
         } else {
             return 'ERROR';
         }
     },
     clear() {
-        userInput1.textContent = ''; 
+        displayValue.textContent = ''; 
         previousNum = null;
         secondNum = null;
         operator = 'default';
         decimals = false;
     },
     del() {
-        userInput1.textContent = userInput1.textContent.slice(0,-1);
+        displayValue.textContent = displayValue.textContent.slice(0,-1);
        },
     equal() {    
     console.log(previousNum = parseFloat(previousNum));
-    console.log(secondNum = userInput1.textContent);
+    console.log(secondNum = displayValue.textContent);
         //if (secondNum === '') {
           //  secondNum.slice(0-1);
-            //return secondNum = userInput1.textContent;
+            //return secondNum = displayValue.textContent;
         secondNum = parseFloat(secondNum);
         calculator.operate(operator, previousNum, secondNum);
         decimals = false;
@@ -73,16 +72,16 @@ clearButton.addEventListener('click', calculator.clear);
 
 const displayNumbers = numberButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
-    if ((e.target.id >= 0 && e.target.id <=9)) userInput1.textContent += `${e.target.id}`;
+    if ((e.target.id >= 0 && e.target.id <=9)) displayValue.textContent += `${e.target.id}`;
     if ((e.target.id === '.') && (decimals === false)) {
-        userInput1.textContent += `${e.target.id}`;
+        displayValue.textContent += `${e.target.id}`;
         decimals = true;
     }
     if ((e.target.id === '.') && (decimals == true)) {
         return;
     }
     if (operatorActive === true) {
-        userInput1.textContent = e.target.id
+        displayValue.textContent = e.target.id
         operatorActive = false;
     }   
     })
@@ -91,7 +90,7 @@ const displayNumbers = numberButtons.forEach((button) => {
 const controlOperator = operationButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
         if ((previousNum === null) && (operator === 'default') && (e.target.id === '-' || e.target.id === '/' || e.target.id === '+' || e.target.id === 'x')) {
-            previousNum = userInput1.textContent;
+            previousNum = displayValue.textContent;
             operator = e.target.id; 
             operatorActive = true;
             decimals = false;
@@ -105,7 +104,7 @@ const controlOperator = operationButtons.forEach((button) => {
                 return;
             } else {
              calculator.equal();
-             previousNum = userInput1.textContent
+             previousNum = displayValue.textContent
              operatorActive = true;
              operator = e.target.id;
             }
