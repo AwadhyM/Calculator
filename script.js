@@ -60,7 +60,6 @@ calculator = {
             //return secondNum = userInput1.textContent;
         secondNum = parseFloat(secondNum);
         calculator.operate(operator, previousNum, secondNum);
-        operator = 'default';
         decimals = false;
         currentNum = null;
         }
@@ -74,7 +73,14 @@ clearButton.addEventListener('click', calculator.clear);
 
 const displayNumbers = numberButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
-    if (e.target.id >= 0 && e.target.id <=9) userInput1.textContent += `${e.target.id}`;
+    if ((e.target.id >= 0 && e.target.id <=9)) userInput1.textContent += `${e.target.id}`;
+    if ((e.target.id === '.') && (decimals === false)) {
+        userInput1.textContent += `${e.target.id}`;
+        decimals = true;
+    }
+    if ((e.target.id === '.') && (decimals == true)) {
+        return;
+    }
     if (operatorActive === true) {
         userInput1.textContent = e.target.id
         operatorActive = false;
@@ -88,13 +94,14 @@ const controlOperator = operationButtons.forEach((button) => {
             previousNum = userInput1.textContent;
             operator = e.target.id; 
             operatorActive = true;
+            decimals = false;
         } else if ((operator != 'default') && (previousNum === null)) {
             operator = e.target.id;
             operatorActive = false;
         }
         if ((previousNum != null) && operatorActive === false) {
             if (operator === 'default') {
-               // operator = e.target.id;
+                //operator = e.target.id;
                 return;
             } else {
              calculator.equal();
