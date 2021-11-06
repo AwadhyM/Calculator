@@ -18,9 +18,8 @@ header {
 #date {
     position: relative;
     left: 35px;
-    margin-top: -5px;
     font-size: 25px;
-    color: white;
+    color: black;
     text-decoration: underline black;
     font-style: italic;
 }
@@ -43,7 +42,7 @@ h2 {
     font-size:50px; 
     text-decoration: underline black;
     font-style: italic;
-    color: white;
+    color: black;
     font-weight: 900;
 }
 
@@ -75,7 +74,7 @@ h2 {
 
 
 #display {
-    display: flex;
+    display: grid;
     justify-content: flex-end;
     flex-direction: row;
     overflow: hidden;
