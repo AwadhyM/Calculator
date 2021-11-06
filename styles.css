@@ -51,8 +51,6 @@ h2 {
     color: black;
 }
 
-
-
 #containCalculator {
     display: flex;
     justify-content: center;
@@ -72,7 +70,6 @@ h2 {
     color: black;
 }
 
-
 #display {
     display: grid;
     justify-content: flex-end;
@@ -84,7 +81,6 @@ h2 {
     width: 475px;
     height: 55px;
 }
-
 
 #top {
     display: flex;
@@ -134,4 +130,3 @@ button:hover {
 h2:hover {
     color: #f7df1e;
 }
-
