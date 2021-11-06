@@ -18,7 +18,7 @@ const operateButton = document.getElementById('=');
 const displayValue = document.createElement('h3');
 const previousCalculation = document.createElement('h4');
 calculatorDisplay.appendChild(displayValue).className="calculatorOutput";
-calculatorDisplay.appendChild(previousCalculation).className="previousCalcOutput"
+
 
 displayValue.textContent = ''
 let previousNum = null;
