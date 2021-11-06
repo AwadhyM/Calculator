@@ -1,4 +1,3 @@
-
 // code that displays date 
 
 function displayDate() {
@@ -32,7 +31,7 @@ let decimals = false;
 calculator = {
     operate(operator,previousNum, secondNum) {
         if (operator === '+') {
-            return userInput1.textContent = calculation.addition(previousNum, secondNum);
+            return previousNum = userInput1.textContent = calculation.addition(previousNum, secondNum);
         } else if (operator === '-') {
             return previousNum = userInput1.textContent = calculation.subtraction(previousNum, secondNum);
         } else if (operator === '/') {
@@ -54,8 +53,8 @@ calculator = {
         userInput1.textContent = userInput1.textContent.slice(0,-1);
        },
     equal() {    
-    previousNum = parseFloat(previousNum);
-    secondNum = userInput1.textContent;
+    console.log(previousNum = parseFloat(previousNum));
+    console.log(secondNum = userInput1.textContent);
         //if (secondNum === '') {
           //  secondNum.slice(0-1);
             //return secondNum = userInput1.textContent;
@@ -63,7 +62,6 @@ calculator = {
         calculator.operate(operator, previousNum, secondNum);
         operator = 'default';
         decimals = false;
-        previousNum = null;
         currentNum = null;
         }
     }
@@ -87,15 +85,23 @@ const displayNumbers = numberButtons.forEach((button) => {
 const controlOperator = operationButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
         if ((previousNum === null) && (operator === 'default') && (e.target.id === '-' || e.target.id === '/' || e.target.id === '+' || e.target.id === 'x')) {
-            console.log(previousNum = userInput1.textContent);
-            console.log(operator = e.target.id); 
+            previousNum = userInput1.textContent;
+            operator = e.target.id; 
             operatorActive = true;
-        } else if ((operator != 'default')) {
+        } else if ((operator != 'default') && (previousNum === null)) {
             operator = e.target.id;
             operatorActive = false;
         }
-        if ((previousNum != null) && (operator != 'default') && operatorActive === false) {
+        if ((previousNum != null) && operatorActive === false) {
+            if (operator === 'default') {
+               // operator = e.target.id;
+                return;
+            } else {
              calculator.equal();
+             previousNum = userInput1.textContent
+             operatorActive = true;
+             operator = e.target.id;
+            }
         }
     })
 })
