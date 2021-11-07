@@ -14,7 +14,6 @@ const insertDate = document.getElementsByClassName('.date');
 const deleteButton = document.getElementById('del');
 const numberButtons = document.querySelectorAll('.numericalButton');
 const operationButtons = document.querySelectorAll('.operationButton');
-const operateButton = document.getElementById('=');
 const displayValue = document.createElement('h3');
 calculatorDisplay.appendChild(displayValue).className="calculatorOutput";
 
@@ -56,6 +55,10 @@ calculator = {
     (secondNum = parseFloat(secondNum));
     calculator.operate(operator, previousNum, secondNum);
     decimals = false, currentNum = null;
+    plusButton.style.backgroundColor = "rgb(255,255,255)"
+    multiplicationButton.style.backgroundColor = "rgb(255,255,255)"
+    minusButton.style.backgroundColor = "rgb(255,255,255)"
+    divisionButton.style.backgroundColor = "rgb(255,255,255)"
     }
     }
 
@@ -64,7 +67,6 @@ deleteButton.addEventListener('click', calculator.del);
 clearButton.addEventListener('click', calculator.clear);
 
 //functions used to display numbers and control the operator
-
 const displayNumbers = numberButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
     if ((previousNum === null) && (e.target.id === '=') && (operatorActive === true)) {
