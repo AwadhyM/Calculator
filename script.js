@@ -50,9 +50,14 @@ calculator = {
         displayValue.textContent = displayValue.textContent.slice(0,-1);
        },
     equal() {    
-    (previousNum = parseFloat(previousNum));
+    previousNum = parseFloat(previousNum);
     secondNum = displayValue.textContent;
-    (secondNum = parseFloat(secondNum));
+    if (isNaN(parseFloat(secondNum))){
+        secondNum = parseFloat(0);
+        console.log(secondNum)
+      } else {
+        (secondNum = parseFloat(secondNum));
+      }
     calculator.operate(operator, previousNum, secondNum);
     decimals = false, currentNum = null;
     plusButton.style.backgroundColor = "rgb(255,255,255)"
@@ -61,6 +66,26 @@ calculator = {
     divisionButton.style.backgroundColor = "rgb(255,255,255)"
     }
     }
+
+//Functions for each calculation
+calculation = {
+    addition(previousNum, secondNum) {
+        return (previousNum + secondNum);
+    },
+    subtraction(previousNum, secondNum) {
+        return (previousNum - secondNum);
+    },
+    multiplication(previousNum, secondNum) {
+        return previousNum * secondNum;
+    },
+    division(previousNum, secondNum) {
+        if (secondNum === 0) {
+            return 'Error!';
+        } else {
+            return previousNum / secondNum;
+        } 
+}
+}
 
 // Event listeners for AC and Del buttons
 deleteButton.addEventListener('click', calculator.del);
@@ -97,15 +122,12 @@ const displayNumbers = numberButtons.forEach((button) => {
     if ((e.target.id === '=') || (e.target.id === '=' && previousNum === null)) {
         return;
     }
+    if ((e.target.id === '=') && (previousNum != null) && (operator === 'default')) return;
     })
 })
 
 const controlOperator = operationButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
-        if ((operator === e.target.id)) {
-            console.log(e.target);
-            console.log(e.target.style.backgroundColor = "rgb(255,165,0)");
-        }
         if ((previousNum === null) && (operator === 'default') && (e.target.id === '-' || e.target.id === '/' || e.target.id === '+' || e.target.id === 'x')) {
             previousNum = displayValue.textContent;
             operator = e.target.id; 
@@ -135,7 +157,6 @@ const divisionButton = document.getElementById('/');
 const controlColorOfOperator = operationButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
     if((operator === e.target.id) && (e.target.id === '+')) {
-        console.log('test');
         plusButton.style.backgroundColor = "rgb(255,165,0)";
     } else if (operator != '+') {
         plusButton.style.backgroundColor = "rgb(255,255,255)";
@@ -159,22 +180,3 @@ const controlColorOfOperator = operationButtons.forEach((button) => {
 })
 
 
-//Functions for each calculation
-calculation = {
-    addition(previousNum, secondNum) {
-        return (previousNum + secondNum);
-    },
-    subtraction(previousNum, secondNum) {
-        return (previousNum - secondNum);
-    },
-    multiplication(previousNum, secondNum) {
-        return previousNum * secondNum;
-    },
-    division(previousNum, secondNum) {
-        if (secondNum === 0) {
-            return 'Error!';
-        } else {
-            return previousNum / secondNum;
-        } 
-}
-}
