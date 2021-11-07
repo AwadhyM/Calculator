@@ -90,6 +90,10 @@ const displayNumbers = numberButtons.forEach((button) => {
 
 const controlOperator = operationButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
+        if ((operator === e.target.id)) {
+            console.log(e.target);
+            console.log(e.target.style.backgroundColor = "rgb(255,165,0)");
+        }
         if ((previousNum === null) && (operator === 'default') && (e.target.id === '-' || e.target.id === '/' || e.target.id === '+' || e.target.id === 'x')) {
             previousNum = displayValue.textContent;
             operator = e.target.id; 
@@ -107,6 +111,38 @@ const controlOperator = operationButtons.forEach((button) => {
              operatorActive = true;
              operator = e.target.id;
         }
+    })
+})
+
+const plusButton = document.getElementById('+');
+const minusButton = document.getElementById('-');
+const multiplicationButton = document.getElementById('x');
+const divisionButton = document.getElementById('/');
+
+//Function that shades button when clicked
+const controlColorOfOperator = operationButtons.forEach((button) => {
+    button.addEventListener('click', function(e) {
+    if((operator === e.target.id) && (e.target.id === '+')) {
+        console.log('test');
+        plusButton.style.backgroundColor = "rgb(255,165,0)";
+    } else if (operator != '+') {
+        plusButton.style.backgroundColor = "rgb(255,255,255)";
+    }
+    if((operator === e.target.id) && (e.target.id === '-')) {
+        minusButton.style.backgroundColor = "rgb(255,165,0)";
+    } else if ((operator != 'x') && (e.target.id != 'x')) {
+        minusButton.style.backgroundColor = "rgb(255,255,255)";
+    }
+    if((operator === e.target.id) && (e.target.id === 'x')) {
+    multiplicationButton.style.backgroundColor = "rgb(255,165,0)";
+    } else if ((operator != 'x') && (e.target.id != 'x')) {
+        multiplicationButton.style.backgroundColor = "rgb(255,255,255)";
+    }
+    if((operator === e.target.id) && (e.target.id === '/')) {
+        divisionButton.style.backgroundColor = "rgb(255,165,0)";
+    } else if ((operator != '/') && (e.target.id != '/')) {
+        divisionButton.style.backgroundColor = "rgb(255,255,255)";
+    }
     })
 })
 
