@@ -64,8 +64,12 @@ deleteButton.addEventListener('click', calculator.del);
 clearButton.addEventListener('click', calculator.clear);
 
 //functions used to display numbers and control the operator
+
 const displayNumbers = numberButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
+    if ((previousNum === null) && (e.target.id === '=') && (operatorActive === true)) {
+        return;
+    } 
     if ((e.target.id >= 0 && e.target.id <=9)) displayValue.textContent += `${e.target.id}`;
     if ((e.target.id === '.') && (decimals === false)) {
         displayValue.textContent += e.target.id;
@@ -78,12 +82,18 @@ const displayNumbers = numberButtons.forEach((button) => {
         displayValue.textContent = e.target.id
         operatorActive = false;
     }   
+    if ((e.target.id === '=') && (previousNum === null)) {
+       return;
+    }
     if ((e.target.id === '=') && (previousNum != null) && (operatorActive === false)) {
         console.log('hello');
         calculator.equal();
         operatorActive = true;
         previousNum = null;
         operator = 'default';
+    }
+    if ((e.target.id === '=') || (e.target.id === '=' && previousNum === null)) {
+        return;
     }
     })
 })
