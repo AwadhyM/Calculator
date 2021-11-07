@@ -51,12 +51,12 @@ calculator = {
         displayValue.textContent = displayValue.textContent.slice(0,-1);
        },
     equal() {    
-    console.log(previousNum = parseFloat(previousNum));
+    (previousNum = parseFloat(previousNum));
     secondNum = displayValue.textContent;
-    console.log(secondNum = parseFloat(secondNum));
+    (secondNum = parseFloat(secondNum));
     calculator.operate(operator, previousNum, secondNum);
     decimals = false, currentNum = null;
-        }
+    }
     }
 
 // Event listeners for AC and Del buttons
@@ -78,6 +78,13 @@ const displayNumbers = numberButtons.forEach((button) => {
         displayValue.textContent = e.target.id
         operatorActive = false;
     }   
+    if ((e.target.id === '=') && (previousNum != null) && (operatorActive === false)) {
+        console.log('hello');
+        calculator.equal();
+        operatorActive = true;
+        previousNum = null;
+        operator = 'default';
+    }
     })
 })
 
@@ -93,20 +100,16 @@ const controlOperator = operationButtons.forEach((button) => {
             operatorActive = false;
         }
         if ((previousNum != null) && operatorActive === false) {
-            if (operator === 'default') {
-                return;
-            } else {
+            //if (operator === 'default') {
+                //return;
              calculator.equal();
              previousNum = displayValue.textContent
              operatorActive = true;
              operator = e.target.id;
-            }
         }
     })
 })
 
-
-operateButton.addEventListener('click', calculator.equal);
 
 //Functions for each calculation
 calculation = {
@@ -127,5 +130,3 @@ calculation = {
         } 
 }
 }
-
-
