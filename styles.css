@@ -55,6 +55,7 @@ h2 {
     display: flex;
     justify-content: center;
     margin-left: 520px;
+    margin-top: -50px;
 }
 
 #calculator {
