@@ -5,7 +5,6 @@ body, html {
 .bg {
     background-image: url(Images/notepad-background.jpg);
     height: 100%;
-    background-position: center;
     background-size: cover;
 }
 
