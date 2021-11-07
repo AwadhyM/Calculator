@@ -6,7 +6,7 @@ function displayDate() {
 
 displayDate();
 
-// Variables and objects relating to calculator
+// Variables for manipulating the DOM
 
 const calculatorDisplay = document.getElementById('display');
 const clearButton = document.getElementById('AC');
@@ -24,6 +24,8 @@ let currentNum = null;
 let operator = 'default'; 
 let operatorActive = false;
 let decimals = false; 
+
+//calculator object
 
 calculator = {
     operate(operator,previousNum, secondNum) {
@@ -54,7 +56,6 @@ calculator = {
     secondNum = displayValue.textContent;
     if (isNaN(parseFloat(secondNum))){
         secondNum = parseFloat(0);
-        console.log(secondNum)
       } else {
         (secondNum = parseFloat(secondNum));
       }
@@ -67,7 +68,7 @@ calculator = {
     }
     }
 
-//Functions for each calculation
+//Calculation object containing functions for operations
 calculation = {
     addition(previousNum, secondNum) {
         return (previousNum + secondNum);
@@ -148,12 +149,14 @@ const controlOperator = operationButtons.forEach((button) => {
     })
 })
 
+//Controling color of Operation buttons 
+
 const plusButton = document.getElementById('+');
 const minusButton = document.getElementById('-');
 const multiplicationButton = document.getElementById('x');
 const divisionButton = document.getElementById('/');
 
-//Function that shades button when clicked
+
 const controlColorOfOperator = operationButtons.forEach((button) => {
     button.addEventListener('click', function(e) {
     if((operator === e.target.id) && (e.target.id === '+')) {
