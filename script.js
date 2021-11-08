@@ -1,11 +1,3 @@
-// code that displays date 
-
-function displayDate() {
-    document.getElementById("date").textContent = Date().slice(0,16);
-}
-
-displayDate();
-
 // Variables for manipulating the DOM
 
 const calculatorDisplay = document.getElementById('display');
