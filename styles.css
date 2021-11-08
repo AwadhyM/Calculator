@@ -1,20 +1,6 @@
-
-
-header {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+body {
+    background-color: lavender;
 }
-
-#date {
-    position: relative;
-    left: 35px;
-    font-size: 25px;
-    color: black;
-    text-decoration: underline black;
-    font-style: italic;
-}
-
 h2 {
     font-size: 50px;
     font-weight: 900;
@@ -45,8 +31,6 @@ h2 {
 #containCalculator {
     display: flex;
     justify-content: center;
-    margin-left: 520px;
-    margin-top: -50px;
 }
 
 #calculator {
@@ -58,7 +42,7 @@ h2 {
     border-radius: 40px;
     width: 500px;
     height: 600px;
-    background-color: (128, 128, 128, 0);
+    background-color: grey;
     color: black;
 }
 
