@@ -1,12 +1,4 @@
-body, html {
-    height:100%
-}
 
-.bg {
-    background-image: url(Images/notepad-background.jpg);
-    height: 100%;
-    background-size: cover;
-}
 
 header {
     display: flex;

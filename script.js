@@ -103,7 +103,7 @@ const displayNumbers = numberButtons.forEach((button) => {
         displayValue.textContent += e.target.id;
         decimals = true;
     }
-    if ((e.target.id === '.') && (decimals == true)) {
+    if ((e.target.id === '.') && (decimals === true)) {
         return;
     }
     if (operatorActive === true) {
